@@ -13,10 +13,13 @@ pipeline {
             }
         }
         
-        stage('QS') {
+        stage('Test') {
             steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh "${scannerHome}/bin/sonar-scanner"
+                sh 'mvn test'
+            }
+            post {
+                always {
+                  junit 'target/surefire-reports/*.xml'
                 }
             }
         }
