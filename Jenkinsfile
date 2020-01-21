@@ -9,6 +9,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
+                def scannerHome = tool 'SonarQubeScanner3'
+                withSonarQubeEnv('SonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner"     
             }
         }
     }
