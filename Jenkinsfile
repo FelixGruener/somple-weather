@@ -33,5 +33,15 @@ pipeline {
             }
         }
     }
+        stage('Code Analyse') {
+        steps {
+            sh 'mvn checkstyle:checkstyle'
+        }
+        post {
+            always {
+              checkstyle pattern: 'target/checkstyle-result.xml'
+            }
+        }
+    }
     }
 }
