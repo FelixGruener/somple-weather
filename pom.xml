@@ -35,8 +35,7 @@
             </goals>
         </execution>
     </executions>
-</plugin>
-  </build>
       </plugins>
     </pluginManagement>
+      </build>
 </project>
