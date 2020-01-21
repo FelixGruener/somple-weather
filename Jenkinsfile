@@ -12,5 +12,14 @@ pipeline {
                  
             }
         }
+        
+        stage('QS') {
+            steps {
+                def scannerHome = tool 'SonarQubeScanner3'
+                withSonarQubeEnv('SonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
+        }
     }
 }
